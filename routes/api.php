@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Paypal\PayPaypalController;
-use App\Http\Controllers\Api\Stripe\PayStripeController;
+use App\Http\Controllers\Api\Stripe\PayStripeLayoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ Route::group([
         });
         Route::prefix('stripe')->group(function () {
             Route::middleware('user.stripe.customer')->group(function () {
-                Route::post('create-stripe-layout', [PayStripeController::class, 'index'])
+                Route::post('create-stripe-layout', [PayStripeLayoutController::class, 'index'])
                     ->name('payment.stripe.create-stripe-layout');
             });
         });

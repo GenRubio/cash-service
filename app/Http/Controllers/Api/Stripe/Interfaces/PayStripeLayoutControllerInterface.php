@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Stripe\Interfaces;
 
 use Illuminate\Http\Request;
 
-interface PayStripeControllerInterface
+interface PayStripeLayoutControllerInterface
 {
     /**
      * @OA\Post(

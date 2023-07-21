@@ -8,9 +8,9 @@ use App\Exceptions\GenericException;
 use App\Http\Controllers\Controller;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
-use App\Http\Controllers\Api\Stripe\Interfaces\PayStripeControllerInterface;
+use App\Http\Controllers\Api\Stripe\Interfaces\PayStripeLayoutControllerInterface;
 
-class PayStripeController extends Controller implements PayStripeControllerInterface
+class PayStripeLayoutController extends Controller implements PayStripeLayoutControllerInterface
 {
     public function index(Request $request)
     {
