@@ -25,8 +25,10 @@ Route::group([
                 ->name('payment.paypal.create');
         });
         Route::prefix('stripe')->group(function () {
-            Route::post('create', [PayStripeController::class, 'index'])
-                ->name('payment.stripe.create');
+            Route::middleware('user.stripe.customer')->group(function () {
+                Route::post('create-stripe-layout', [PayStripeController::class, 'index'])
+                    ->name('payment.stripe.create-stripe-layout');
+            });
         });
     });
 });
