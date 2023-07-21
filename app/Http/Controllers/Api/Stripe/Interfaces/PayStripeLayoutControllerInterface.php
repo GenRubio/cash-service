@@ -8,11 +8,11 @@ interface PayStripeLayoutControllerInterface
 {
     /**
      * @OA\Post(
-     * path="/payment/stripe/create-stripe-layout",
-     * summary="Create Stripe Layout Payment URL",
-     * description="Create Stripe Layout Payment URL",
-     * operationId="createPaymentStripeLayout",
-     * tags={"API"},
+     * path="/payment/stripe/stripe-layout",
+     * summary="Stripe Layout Payment URL",
+     * description="Stripe Layout Payment URL",
+     * operationId="paymentStripeLayout",
+     * tags={"Stripe"},
      * security={
      *   {"passport": {}},
      * },
@@ -64,8 +64,8 @@ interface PayStripeLayoutControllerInterface
      *                       }
      *                   },
      *                   "mode": "payment",
-     *                   "success_url": "https://example.com/success",
-     *                   "cancel_url": "https://example.com/cancel", 
+     *                   "success_url": "https://example.com/success/token_238423747824734",
+     *                   "cancel_url": "https://example.com/cancel/token_238423747824734", 
      *               }
      *            }
      *       ),
