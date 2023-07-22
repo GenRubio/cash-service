@@ -29,9 +29,9 @@ Route::group([
             Route::middleware('user.stripe.customer')->group(function () {
                 Route::post('stripe-layout', [PayStripeLayoutController::class, 'index'])
                     ->name('payment.stripe.stripe-layout');
-                Route::post('card', [PayStripeCardController::class, 'index'])
-                    ->name('payment.stripe.card');
             });
+            Route::post('card', [PayStripeCardController::class, 'index'])
+                ->name('payment.stripe.card');
         });
     });
 });
