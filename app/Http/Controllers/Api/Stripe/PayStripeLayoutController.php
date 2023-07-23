@@ -3,19 +3,21 @@
 namespace App\Http\Controllers\Api\Stripe;
 
 use Exception;
+use Stripe\Stripe;
 use Illuminate\Http\Request;
+use Stripe\Checkout\Session;
 use App\Exceptions\GenericException;
 use App\Http\Controllers\Controller;
-use Stripe\Stripe;
-use Stripe\Checkout\Session;
-use App\Http\Controllers\Api\Stripe\Interfaces\PayStripeLayoutControllerInterface;
+use App\Validators\Stripe\ValidateCouponStripeLayout;
+use App\Http\Controllers\Api\Stripe\Interfaces\PayStripeLayoutInterface;
 
-class PayStripeLayoutController extends Controller implements PayStripeLayoutControllerInterface
+class PayStripeLayoutController extends Controller implements PayStripeLayoutInterface
 {
     public function index(Request $request)
     {
         try {
             $request = getJsonDataValues($request);
+            ValidateCouponStripeLayout::validate($request['payment']['discounts'] ?? null);
             Stripe::setApiKey(config('services.stripe.secret_key'));
             if ($request['retrieve_stripe_id']) {
                 $session = Session::retrieve($request['retrieve_stripe_id']);

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Stripe\Interfaces;
 
 use Illuminate\Http\Request;
 
-interface PayStripeLayoutControllerInterface
+interface PayStripeLayoutInterface
 {
     /**
      * @OA\Post(
@@ -51,6 +51,9 @@ interface PayStripeLayoutControllerInterface
      *                          },
      *                       }
      *                   },
+     *                   "discounts": {{
+     *                     "coupon": "coupon_238423747824734",
+     *                   }},
      *                   "line_items": {
      *                       {
      *                          "price_data": {

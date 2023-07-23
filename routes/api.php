@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Paypal\PayPaypalController;
 use App\Http\Controllers\Api\Stripe\PayStripeCardController;
 use App\Http\Controllers\Api\Stripe\PayStripeLayoutController;
+use App\Http\Controllers\Api\Stripe\CreateStripeCouponsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,12 @@ Route::group([
             });
             Route::post('card', [PayStripeCardController::class, 'index'])
                 ->name('payment.stripe.card');
+        });
+    });
+    Route::prefix('stripe')->group(function () {
+        Route::prefix('coupons')->group(function () {
+            Route::post('create', [CreateStripeCouponsController::class, 'index'])
+                ->name('stripe.coupons.create');
         });
     });
 });
