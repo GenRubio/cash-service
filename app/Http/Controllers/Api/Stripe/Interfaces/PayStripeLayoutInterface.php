@@ -8,11 +8,11 @@ interface PayStripeLayoutInterface
 {
     /**
      * @OA\Post(
-     * path="/payment/stripe/stripe-layout",
+     * path="/stripe/payment/stripe-layout",
      * summary="Stripe Layout Payment URL",
      * description="Stripe Layout Payment URL",
      * operationId="paymentStripeLayout",
-     * tags={"Stripe"},
+     * tags={"Stripe Payment"},
      * security={
      *   {"passport": {}},
      * },
@@ -52,8 +52,9 @@ interface PayStripeLayoutInterface
      *                       }
      *                   },
      *                   "discounts": {{
-     *                     "coupon": "coupon_238423747824734",
+     *                     "coupon": "Z5ixjx9g",
      *                   }},
+     *                   "allow_promotion_codes": true,
      *                   "line_items": {
      *                       {
      *                          "price_data": {

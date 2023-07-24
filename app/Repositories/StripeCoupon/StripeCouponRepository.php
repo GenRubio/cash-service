@@ -51,4 +51,9 @@ class StripeCouponRepository extends Repository implements StripeCouponRepositor
     {
         return $this->model->create($coupon);
     }
+
+    public function deleteByCouponId($couponId)
+    {
+        return $this->model->where('coupon_id', $couponId)->delete();
+    }
 }

@@ -9,8 +9,10 @@ use Illuminate\Http\Request;
 use App\Exceptions\GenericException;
 use App\Http\Controllers\Controller;
 use App\Services\StripeCouponService;
+use App\Prepares\Stripe\DataCouponPreapre;
+use App\Http\Controllers\Api\Stripe\Coupons\Interfaces\CreateStripeCouponsInterface;
 
-class CreateStripeCouponsController extends Controller
+class CreateStripeCouponsController extends Controller implements CreateStripeCouponsInterface
 {
     public function index(Request $request)
     {
@@ -22,7 +24,8 @@ class CreateStripeCouponsController extends Controller
             Stripe::setApiKey(config('services.stripe.secret_key'));
             $client = new StripeClient(config('services.stripe.secret_key'));
             foreach ($request['coupons'] as $coupon) {
-                $couponStripe = $client->coupons->create($coupon);
+                $dataCouponPrepare = (new DataCouponPreapre($coupon))->prepare();
+                $couponStripe = $client->coupons->create($dataCouponPrepare);
                 $coupon['coupon_id'] = $couponStripe->id;
                 (new StripeCouponService())->create($coupon);
             }

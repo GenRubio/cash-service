@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Api\Stripe\Interfaces;
+namespace App\Http\Controllers\Api\Stripe\Coupons\Interfaces;
 
 use Illuminate\Http\Request;
 
-interface PayStripeCardInterface
+interface DeleteStripeCouponsInterface
 {
     /**
      * @OA\Post(
-     * path="/stripe/payment/card",
-     * summary="Stripe Card Payment URL",
-     * description="Stripe Card Payment URL",
-     * operationId="paymentStripeCard",
-     * tags={"Stripe Payment"},
+     * path="/stripe/coupons/delete",
+     * summary="Delete Stripe Coupons",
+     * description="Delete Stripe Coupons",
+     * operationId="deleteStripeCoupons",
+     * tags={"Stripe Coupons"},
      * security={
      *   {"passport": {}},
      * },
@@ -25,15 +25,7 @@ interface PayStripeCardInterface
      *           property="_data",
      *           type="object",
      *           example={
-     *              "user_id": null,
-     *              "amount": 2000,
-     *              "description": "My First Test Charge",
-     *              "card": {
-     *                 "number": "4242424242424242",
-     *                 "exp_month": "8",
-     *                 "exp_year": "2028",
-     *                 "cvc": "314"
-     *              }
+     *              "coupon_id": "Z5ixjx9g"
      *           }
      *       ),
      *    ),

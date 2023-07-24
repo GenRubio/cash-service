@@ -11,4 +11,5 @@ interface StripeCouponRepositoryInterface
     public function getActiveCoupons();
     public function getActiveCoupon($couponId);
     public function create($coupon);
+    public function deleteByCouponId($couponId);
 }

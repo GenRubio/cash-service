@@ -39,4 +39,9 @@ class StripeCouponService extends Controller
     {
         return $this->stripecouponRepository->create($coupon);
     }
+
+    public function deleteByCouponId($couponId)
+    {
+        return $this->stripecouponRepository->deleteByCouponId($couponId);
+    }
 }
