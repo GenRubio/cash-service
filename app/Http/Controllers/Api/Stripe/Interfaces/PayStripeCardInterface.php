@@ -26,6 +26,7 @@ interface PayStripeCardInterface
      *           type="object",
      *           example={
      *              "user_id": null,
+     *              "return_stripe_api_response": true,
      *              "amount": 2000,
      *              "description": "My First Test Charge",
      *              "card": {

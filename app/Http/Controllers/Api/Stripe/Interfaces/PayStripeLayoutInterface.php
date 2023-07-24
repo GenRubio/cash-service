@@ -79,7 +79,17 @@ interface PayStripeLayoutInterface
      *    response=200,
      *    description="Results limit exceeded",
      *    @OA\JsonContent(
-     *       @OA\Property(property="message", type="string", example="")
+     *       @OA\Property(
+     *           property="message", 
+     *           type="string", 
+     *           example={
+     *              "error": false,
+     *              "data": {
+     *                "retrieve_stripe_id": "cs_test_b1ffhNZvf421f42qKxUrtigMyJjTN5U4juXtAviJJbmJyoujCArrmliLkn",
+     *                "payment_url": "https://checkout.stripe.com/c/pay/cs_test_b1ffhNZvf421f42qKxUrtigMyJjTN5U4juXtAviJJbmJyoujCArrmliLkn#fidkdWxOYHwnPyd1blpxYHZxWjA0SE1uNjFHTnFST01HRExTbj1pdklUVXJuTjBwdENkQGNOQGphYmJQd11xM2FkbG5ncWBRSTZIdk08MH1uQDRDPU1pSDZKdHBAcnNmblV8cGZWZ203UGRHNTViVV1sTH9dTCcpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl"
+     *              }
+     *            }
+     *          )
      *        )
      *     )
      * )

@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\StripeCoupon;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\StripeCouponResource;
+use App\Http\Resources\StripeCouponCollection;
 use App\Repositories\StripeCoupon\StripeCouponRepository;
 use App\Repositories\StripeCoupon\StripeCouponRepositoryInterface;
 
@@ -49,6 +50,8 @@ class StripeCouponService extends Controller
     public function search($request)
     {
         $coupons = $this->stripecouponRepository->search($request);
-        return StripeCouponResource::collection($coupons);
+        return new StripeCouponCollection($coupons, [
+            "return_stripe_api_response" => $request['return_stripe_api_response']
+        ]);
     }
 }

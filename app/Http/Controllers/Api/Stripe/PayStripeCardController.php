@@ -27,11 +27,15 @@ class PayStripeCardController extends Controller implements PayStripeCardInterfa
                 'source' => $token->id,
                 'description' => $request['description'],
             ]);
+
+            $responseData = [];
+            $responseData['status'] = $responsePayment->status;
+            if ($request['return_stripe_api_response']) {
+                $responseData['stripe_api_response'] = $responsePayment;
+            }
             return response()->json([
                 'error' => false,
-                'data' => [
-                    'status' => $responsePayment->status,
-                ]
+                'data' => $responseData
             ], 200);
         } catch (GenericException | Exception $e) {
             return response()->json([

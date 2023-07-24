@@ -7,6 +7,14 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class StripeCouponCollection extends ResourceCollection
 {
+    public $extra;
+
+    public function __construct($resource, $extraData = [])
+    {
+        parent::__construct($resource);
+        $this->extra = $extraData;
+    }
+
     /**
      * Transform the resource collection into an array.
      *
@@ -14,6 +22,8 @@ class StripeCouponCollection extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return $this->collection->map(function ($n) {
+            return new StripeCouponResource($n, $this->extra);
+        })->toArray();
     }
 }

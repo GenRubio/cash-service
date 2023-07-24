@@ -7,6 +7,13 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class StripeCouponResource extends JsonResource
 {
+    public $extra;
+
+    public function __construct($resource, $extraData = [])
+    {
+        parent::__construct($resource);
+        $this->extra = $extraData;
+    }
     /**
      * Transform the resource into an array.
      *
@@ -22,7 +29,7 @@ class StripeCouponResource extends JsonResource
             'duration' => $this->duration,
             'duration_in_months' => $this->duration_in_months,
             'active' => $this->active,
-            'stripe_api_data' => $this->stripeDataAPI(),
+            'stripe_api_response' => $this->extra['return_stripe_api_response'] ? $this->stripeDataAPI() : [],
         ];
     }
 }
