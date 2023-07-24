@@ -7,7 +7,7 @@ use Stripe\Stripe;
 use App\Exceptions\GenericException;
 use App\Services\StripeCouponService;
 
-class ValidateCouponStripeLayout
+class CouponStripeLayoutValidate
 {
     public static function validate($discounts)
     {

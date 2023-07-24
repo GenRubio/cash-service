@@ -15,6 +15,7 @@ class DataCouponPreapre
 
     public function prepare()
     {
+        //TODO: add validation
         if (!empty($this->data['percent_off'])) {
             $this->responseData['percent_off'] = $this->data['percent_off'];
         } else {

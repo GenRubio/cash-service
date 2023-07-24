@@ -19,6 +19,7 @@ class StripeCoupon extends Model
 
     protected $fillable = [
         'coupon_id',
+        'title',
         'percent_off',
         'amount_off',
         'duration',
@@ -59,18 +60,18 @@ class StripeCoupon extends Model
 
     public function scopeActive($query)
     {
-        return $query->where('active', true);
+        return $query->where($this->table . 'active', true);
     }
 
     public function scopeCoupon($query, $couponId)
     {
-        return $query->where('coupon_id', $couponId);
+        return $query->where($this->table . 'coupon_id', $couponId);
     }
 
     public function scopeCouponSearch($query, $couponId)
     {
         if (!empty($couponId)) {
-            return $query->where('coupon_id', $couponId);
+            return $query->where($this->table . 'coupon_id', $couponId);
         }
     }
 

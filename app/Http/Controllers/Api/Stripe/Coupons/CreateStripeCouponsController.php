@@ -10,6 +10,7 @@ use App\Exceptions\GenericException;
 use App\Http\Controllers\Controller;
 use App\Services\StripeCouponService;
 use App\Prepares\Stripe\DataCouponPreapre;
+use App\Validators\Stripe\CreateDataCouponStripeValidate;
 use App\Http\Controllers\Api\Stripe\Coupons\Interfaces\CreateStripeCouponsInterface;
 
 class CreateStripeCouponsController extends Controller implements CreateStripeCouponsInterface
@@ -23,13 +24,16 @@ class CreateStripeCouponsController extends Controller implements CreateStripeCo
             $request = getJsonDataValues($request);
             Stripe::setApiKey(config('services.stripe.secret_key'));
             $client = new StripeClient(config('services.stripe.secret_key'));
-            
+
             foreach ($request['coupons'] as $coupon) {
+                CreateDataCouponStripeValidate::validate($coupon);
+
                 $dataCouponPrepare = (new DataCouponPreapre($coupon))->prepare();
                 $couponStripe = $client->coupons->create($dataCouponPrepare);
                 $coupon['coupon_id'] = $couponStripe->id;
                 (new StripeCouponService())->create($coupon);
             }
+
             return response()->json([
                 'error' => false,
                 'data' => [

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
 use App\Exceptions\GenericException;
 use App\Http\Controllers\Controller;
-use App\Validators\Stripe\ValidateCouponStripeLayout;
+use App\Validators\Stripe\CouponStripeLayoutValidate;
 use App\Http\Controllers\Api\Stripe\Interfaces\PayStripeLayoutInterface;
 
 class PayStripeLayoutController extends Controller implements PayStripeLayoutInterface
@@ -17,7 +17,7 @@ class PayStripeLayoutController extends Controller implements PayStripeLayoutInt
     {
         try {
             $request = getJsonDataValues($request);
-            ValidateCouponStripeLayout::validate($request['payment']['discounts'] ?? null);
+            CouponStripeLayoutValidate::validate($request['payment']['discounts'] ?? null);
             Stripe::setApiKey(config('services.stripe.secret_key'));
             if ($request['retrieve_stripe_id']) {
                 $session = Session::retrieve($request['retrieve_stripe_id']);

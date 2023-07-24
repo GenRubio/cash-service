@@ -27,7 +27,7 @@ interface CreateStripeCouponsInterface
      *           example={
      *              "coupons": {
      *                {
-     *                   "name": "Example Coupon 1",
+     *                   "title": "Example Coupon 1",
      *                   "percent_off": 25,
      *                   "amount_off": null,
      *                   "duration": "once",
@@ -35,7 +35,7 @@ interface CreateStripeCouponsInterface
      *                   "active": true,
      *               },
      *               {
-     *                   "name": "Example Coupon 2",
+     *                   "title": "Example Coupon 2",
      *                   "percent_off": null,
      *                   "amount_off": 2000,
      *                   "duration": "repeating",
@@ -43,7 +43,7 @@ interface CreateStripeCouponsInterface
      *                   "active": true,
      *               },
      *               {
-     *                   "name": "Example Coupon 3",
+     *                   "title": "Example Coupon 3",
      *                   "percent_off": 25,
      *                   "amount_off": null,
      *                   "duration": "forever",
