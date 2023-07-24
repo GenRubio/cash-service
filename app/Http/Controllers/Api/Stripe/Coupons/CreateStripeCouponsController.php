@@ -23,6 +23,7 @@ class CreateStripeCouponsController extends Controller implements CreateStripeCo
             $request = getJsonDataValues($request);
             Stripe::setApiKey(config('services.stripe.secret_key'));
             $client = new StripeClient(config('services.stripe.secret_key'));
+            
             foreach ($request['coupons'] as $coupon) {
                 $dataCouponPrepare = (new DataCouponPreapre($coupon))->prepare();
                 $couponStripe = $client->coupons->create($dataCouponPrepare);

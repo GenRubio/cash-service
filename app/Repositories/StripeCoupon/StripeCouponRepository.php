@@ -44,7 +44,7 @@ class StripeCouponRepository extends Repository implements StripeCouponRepositor
 
     public function getActiveCoupon($couponId)
     {
-        return $this->model->active()->where('coupon_id', $couponId)->first();
+        return $this->model->coupon($couponId)->active()->first();
     }
 
     public function create($coupon)
@@ -54,6 +54,17 @@ class StripeCouponRepository extends Repository implements StripeCouponRepositor
 
     public function deleteByCouponId($couponId)
     {
-        return $this->model->where('coupon_id', $couponId)->delete();
+        return $this->model->coupon($couponId)->delete();
+    }
+
+    public function search($request)
+    {
+        return $this->model->couponSearch($request['coupon_id'])
+            ->percentOffSearch($request['percent_off']['min'], $request['percent_off']['max'])
+            ->amountOffSearch($request['amount_off']['min'], $request['amount_off']['max'])
+            ->durationSearch($request['duration']['min'], $request['duration']['max'])
+            ->durationInMonthsSearch($request['duration_in_months']['min'], $request['duration_in_months']['max'])
+            ->activeSearch($request['active']['active_true'], $request['active']['active_false'])
+            ->get();
     }
 }

@@ -2,8 +2,9 @@
 
 namespace App\Services;
 
-use App\Http\Controllers\Controller;
 use App\Models\StripeCoupon;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\StripeCouponResource;
 use App\Repositories\StripeCoupon\StripeCouponRepository;
 use App\Repositories\StripeCoupon\StripeCouponRepositoryInterface;
 
@@ -43,5 +44,11 @@ class StripeCouponService extends Controller
     public function deleteByCouponId($couponId)
     {
         return $this->stripecouponRepository->deleteByCouponId($couponId);
+    }
+
+    public function search($request)
+    {
+        $coupons = $this->stripecouponRepository->search($request);
+        return StripeCouponResource::collection($coupons);
     }
 }

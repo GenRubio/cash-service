@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Paypal\PayPaypalController;
 use App\Http\Controllers\Api\Stripe\PayStripeCardController;
 use App\Http\Controllers\Api\Stripe\PayStripeLayoutController;
+use App\Http\Controllers\Api\Stripe\Coupons\GetStripeCouponsController;
 use App\Http\Controllers\Api\Stripe\Coupons\CreateStripeCouponsController;
 use App\Http\Controllers\Api\Stripe\Coupons\DeleteStripeCouponsController;
 
@@ -28,6 +29,8 @@ Route::group([
                 ->name('stripe.coupons.create');
             Route::post('delete', [DeleteStripeCouponsController::class, 'index'])
                 ->name('stripe.coupons.delete');
+            Route::post('get', [GetStripeCouponsController::class, 'index'])
+                ->name('stripe.coupons.get');
         });
         Route::prefix('payment')->group(function () {
             Route::middleware('user.stripe.customer')->group(function () {
