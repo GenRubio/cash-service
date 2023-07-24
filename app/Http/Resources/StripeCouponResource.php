@@ -24,6 +24,7 @@ class StripeCouponResource extends JsonResource
         return [
             'id' => $this->id,
             'coupon_id' => $this->coupon_id,
+            'title' => $this->title,
             'percent_off' => $this->percent_off,
             'amount_off' => $this->amount_off,
             'duration' => $this->duration,

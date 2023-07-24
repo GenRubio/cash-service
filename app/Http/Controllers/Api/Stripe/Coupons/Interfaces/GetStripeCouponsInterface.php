@@ -25,8 +25,8 @@ interface GetStripeCouponsInterface
      *           property="_data",
      *           type="object",
      *           example={
-     *              "coupon_id": "Z5ixjx9g",
-     *              "return_stripe_api_response": true,
+     *              "coupon_id": null,
+     *              "return_stripe_api_response": false,
      *              "percent_off": {
      *                 "min": null,
      *                 "max": null
