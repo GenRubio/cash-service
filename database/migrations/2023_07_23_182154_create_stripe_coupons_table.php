@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('amount_off')->nullable()->comment('A positive integer representing the amount to subtract from an invoice total (required if percent_off is not passed)');
             $table->string('duration')->comment('forever, once, repeating');
             $table->integer('duration_in_months')->nullable()->comment('if duration is repeating');
+            $table->boolean('present_in_stripe')->default(true);
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

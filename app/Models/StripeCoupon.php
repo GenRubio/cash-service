@@ -24,6 +24,7 @@ class StripeCoupon extends Model
         'amount_off',
         'duration',
         'duration_in_months',
+        'present_in_stripe',
         'active',
     ];
 
