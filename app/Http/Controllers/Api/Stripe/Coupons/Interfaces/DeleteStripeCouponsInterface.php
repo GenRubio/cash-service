@@ -25,7 +25,7 @@ interface DeleteStripeCouponsInterface
      *           property="_data",
      *           type="object",
      *           example={
-     *              "coupon_id": "Z5ixjx9g"
+     *              "coupon_ids": {"Z5ixjx9g"}
      *           }
      *       ),
      *    ),
